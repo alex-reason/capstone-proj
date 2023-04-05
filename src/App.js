@@ -1,6 +1,12 @@
+import { Navigation, Home, Reserve, Footer } from "./components"
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+        <Navigation />
+        <Home />
+        <Reserve />
+        <Footer />
+    </div>
   )
 }
 
