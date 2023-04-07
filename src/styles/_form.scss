@@ -1,54 +1,89 @@
-form {
+.form {
     margin: 1rem auto;
-    width: 70%;
-}
-input,
-select {
-    background-color: $highlight-color;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    display: block;
-}
+    padding: 1rem $lg-padding;
+    margin: 0 $lg-padding;
 
-label {
-    font: $p-section-categories;
-    margin-right: 0.5rem;
-}
+    @media screen and (max-width: $sm-screen) {
+        margin: 0;
+    }
 
-select {
-    background-color: $highlight-color;
-}
+    input,
+    select {
+        background-color: $highlight-color;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        display: block;
+    }
 
-.name,
-.details,
-.schedule {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    label {
+        font: $p-section-categories;
+        margin-right: 0.5rem;
+    }
 
-    span {
-        margin-right: 2rem;
-        &:last-of-type {
-            margin-right: 0;
+    select {
+        background-color: $highlight-color;
+    }
+
+    &__name,
+    &__details,
+    &__schedule {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+            margin-right: 2rem;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
         }
     }
-}
 
-.name,
-.schedule {
-    span {
-        width: 100%;
+    &__name,
+    &__details {
+        @media screen and (max-width: $sm-screen) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        span {
+            width: 100%;
+        }
+    }
+
+    &__details span:nth-of-type(2) {
+        width: 60%;
+
+        @media screen and (max-width: $sm-screen) {
+            width: 100%;
+        }
+    }
+
+    &__schedule {
+        span {
+            width: 30%;
+            @media screen and (max-width: $sm-screen) {
+                width: 50%;
+            }
+        }
+    }
+
+    &__confirm {
+        border-top: 1px solid $highlight-color;
+        padding: 1rem 0;
     }
 }
 
-.details {
-    span:first-of-type, span:last-of-type {
-        width: 100%;
-    }
-}
+p {
+    color: $primary-color;
 
-.schedule, .details__num {
-    width: 60%;
+    &:first-of-type {
+        font: $p-section-categories;
+    }
+    &:last-of-type {
+        font: $p-text;
+    }
 }

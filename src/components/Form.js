@@ -10,9 +10,8 @@ const Form = ({ currForm }) => {
     )
 
     const reserveForm = (
-        <form>
-
-            <div className='name'>
+        <form className='form'>
+            <div className='form__name'>
                 <span>
                     <label htmlFor='first-name'>First</label>
                     <Input name='first-name' id="first-name" required />
@@ -26,13 +25,13 @@ const Form = ({ currForm }) => {
             <label htmlFor='email'>Email Address</label>
             <Input type='email' name='email' id="email" required /> */}
 
-            <div className='details'>
+            <div className='form__details'>
                 <span>
                     <label htmlFor='email'>Email Address</label>
                     <Input type='email' name='email' id="email" required />
                 </span>
-                <span className='details__num'>
-                    <label htmlFor='numPeople'>Number of People</label>
+                <span className='form__details-num'>
+                    <label htmlFor='numPeople'>No. of People</label>
                     <Input type='number' name='numPeople' id="numPeople" min='1' max='15' required />
                 </span>
                 <span>
@@ -54,7 +53,7 @@ const Form = ({ currForm }) => {
                 </span>
             </div>
 
-            <div className='schedule'>
+            <div className='form__schedule'>
                 <span>
                     <label htmlFor="date">Date</label>
                     <Input type='date' name='date' id='date' required />
@@ -64,6 +63,12 @@ const Form = ({ currForm }) => {
                     <Input type='time' name='time' id='time' min="09:00" max="19:00" required />
                 </span>
             </div>
+
+            <div className='form__confirm'>
+                <p>Details</p>
+                <p>put details here</p>
+            </div>
+            <button className='btn btn-primary'>Confirm Reservation</button>
 
         </form>
     )
