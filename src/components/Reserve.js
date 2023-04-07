@@ -10,16 +10,14 @@ const Reserve = () => {
         <Header />
 
         <div className='reserve__options'>
-          <button className='btn btn-secondary' onClick={() => setCurrForm('reserve')}>
-            Make a reservation
+          <button className={currForm === 'reserve' ? 'btn btn-secondary btn-active' : 'btn btn-secondary'} onClick={() => setCurrForm('reserve')}>
+            Make a reservations
           </button>
-          <button className='btn btn-secondary' onClick={() => setCurrForm('cancel')}>
+          <button className={currForm === 'cancel' ? 'btn btn-secondary btn-active' : 'btn btn-secondary'} onClick={() => setCurrForm('cancel')}>
             Cancel a reservation
           </button>
         </div>
-
-        <h3>Reserve a table</h3>
-
+        
         <Form currForm={currForm}/>
     </section>
   )

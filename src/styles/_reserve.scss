@@ -17,15 +17,4 @@
             margin: 1rem;
         }
     }
-
-    h3 {
-        font: $h3-section-title;
-        text-transform: uppercase;
-        border-bottom: 1px solid $highlight-color;
-        margin: 0 6rem;
-
-        @media screen and (max-width: $sm-screen) {
-            margin: 0 $lg-padding;
-        }
-    }
 }

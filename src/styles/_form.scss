@@ -75,6 +75,30 @@
         border-top: 1px solid $highlight-color;
         padding: 1rem 0;
     }
+
+    &__cancel {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 50%;
+        margin-bottom: $lg-padding;
+    }
+
+    .btn {
+        display: block;
+        margin: auto;
+    }
+}
+
+h3 {
+    font: $h3-section-title;
+    text-transform: uppercase;
+    border-bottom: 1px solid $highlight-color;
+    margin: 0 6rem;
+
+    @media screen and (max-width: $sm-screen) {
+        margin: 0 $lg-padding;
+    }
 }
 
 p {

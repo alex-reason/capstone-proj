@@ -3,9 +3,12 @@ import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
 const Form = ({ currForm }) => {
 
     const cancelForm = (
-        <form>
-            <label htmlFor='cancel'>Confirmation Number</label>
-            <Input name='cancel' id='cancel' required />
+        <form className='form'>
+            <span className='form__cancel'>
+                <label htmlFor='cancel'>Confirmation Number</label>
+                <Input name='cancel' id='cancel' required />
+            </span>
+            <button className='btn btn-primary'>Cancel Reservation</button>
         </form>
     )
 
@@ -21,9 +24,6 @@ const Form = ({ currForm }) => {
                     <Input name='last-name' id="last-name" />
                 </span>
             </div>
-{/* 
-            <label htmlFor='email'>Email Address</label>
-            <Input type='email' name='email' id="email" required /> */}
 
             <div className='form__details'>
                 <span>
@@ -68,6 +68,7 @@ const Form = ({ currForm }) => {
                 <p>Details</p>
                 <p>put details here</p>
             </div>
+
             <button className='btn btn-primary'>Confirm Reservation</button>
 
         </form>
@@ -75,10 +76,10 @@ const Form = ({ currForm }) => {
 
     return (
         <>
+            <h3>{currForm === 'reserve' ? 'Reserve a Table' : 'Cancel Reservation'}</h3>
             {currForm === 'reserve' ? reserveForm : cancelForm}
         </>
     )
-
 }
 
 export default Form
