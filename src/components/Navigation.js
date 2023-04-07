@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdAddShoppingCart } from "react-icons/md";
 import logo from '../assets/Logo.png'
@@ -14,9 +15,8 @@ const Navigation = () => {
 
     const navContentDesktop = (
         <ul>
-            <li><a href="/home" role="button">Home</a></li>
-            <li><a href="/about" role="button">About</a></li>
-            <li><a href="/reserve" role="button">Reservations</a></li>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/reserve'>Reservations</Link></li>
         </ul>
     );
 

@@ -1,23 +1,22 @@
 @import './variable.scss';
 
-
 .home {
     grid-column: 1 / span 12;
     background-color: $primary-color;
     display: flex;
     flex-direction: column;
-    min-height: 80vh;
+    min-height: 100vh;
     padding-top: $lg-padding;
 }
 
 header {
     background-color: $primary-color;
     grid-column: 1 / span 12;
-    padding: $lg-padding;
+    padding: 1.5rem $lg-padding;
 
     @media screen and (max-width: $sm-screen){
         padding: $sm-padding;
-        padding-top: 2rem;
+        padding-top: 2.5rem;
     }
 
     h1 {
@@ -36,7 +35,7 @@ figure {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     background-color: $primary-color;
-    padding: 0 $lg-padding;
+    padding: $lg-padding;
 
     @media screen and (max-width: $sm-screen){
         grid-template-columns: repeat(8, 1fr);

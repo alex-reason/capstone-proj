@@ -1,0 +1,54 @@
+form {
+    margin: 1rem auto;
+    width: 70%;
+}
+input,
+select {
+    background-color: $highlight-color;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    display: block;
+}
+
+label {
+    font: $p-section-categories;
+    margin-right: 0.5rem;
+}
+
+select {
+    background-color: $highlight-color;
+}
+
+.name,
+.details,
+.schedule {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+        margin-right: 2rem;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+
+.name,
+.schedule {
+    span {
+        width: 100%;
+    }
+}
+
+.details {
+    span:first-of-type, span:last-of-type {
+        width: 100%;
+    }
+}
+
+.schedule, .details__num {
+    width: 60%;
+}

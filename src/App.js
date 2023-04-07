@@ -1,15 +1,19 @@
 import { Navigation, Home, Reserve, Footer } from "./components"
-import { useState } from "react";
-const App = () => {
-  const [content, setContent] = useState('home');
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
+const App = () => {
 
   return (
     <div className='app'>
+      <BrowserRouter>
         <Navigation />
-        {content === 'home' ?  <Home />: <Reserve />}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/reserve' element={<Reserve />} />
+        </Routes>
+      </BrowserRouter>
 
-        <Footer />
+      <Footer />
     </div>
   )
 }

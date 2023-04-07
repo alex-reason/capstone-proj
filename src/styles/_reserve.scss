@@ -1,14 +1,26 @@
 .reserve {
     grid-column: 1 / span 12;
     min-height: 100vh;
+    padding-top: $lg-padding;
     background-color: #fff;
 
     &__options {
         display: flex;
         justify-content: center;
+        padding: 0 $lg-padding;
 
         button {
             margin: 1rem;
         }
+    }
+
+    h3 {
+        font: $h3-section-title;
+        text-transform: uppercase;
+        border-bottom: 1px solid $highlight-color;
+    }
+
+    h3, form {
+        padding: 0 $lg-padding;
     }
 }
