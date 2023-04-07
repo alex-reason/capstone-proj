@@ -1,13 +1,17 @@
 import { Navigation, Home, Reserve, Footer } from "./components"
+import { useState } from "react";
 const App = () => {
+  const [content, setContent] = useState('home');
+
+
   return (
-    <div>
+    <div className='app'>
         <Navigation />
-        <Home />
-        <Reserve />
+        {content === 'home' ?  <Home />: <Reserve />}
+
         <Footer />
     </div>
   )
 }
 
-export default App
+export default App;

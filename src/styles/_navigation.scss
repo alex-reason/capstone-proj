@@ -1,11 +1,40 @@
 nav {
+    grid-column: 1 / span 12;
     margin: auto;
     display: flex;
     justify-content: center;
+    position: fixed;
+    z-index: 100;
+    background-color: $highlight-color;
+    width: 100%;
+    padding: 0.5rem 1rem;
+
+    div {
+        display: none;
+
+        @media screen and (max-width: $sm-screen) {
+            display: flex;
+            margin: auto;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        svg {
+            font-size: 2rem;
+            color: $primary-color;
+        }
+    }
+
     ul {
         display: flex;
+        margin: auto;
+
+        @media screen and (max-width: $sm-screen) {
+            display: none;
+        }
         li {
-            margin-right: .5rem;
+            margin-right: 0.5rem;
         }
     }
 }

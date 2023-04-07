@@ -1,0 +1,14 @@
+.reserve {
+    grid-column: 1 / span 12;
+    min-height: 100vh;
+    background-color: #fff;
+
+    &__options {
+        display: flex;
+        justify-content: center;
+
+        button {
+            margin: 1rem;
+        }
+    }
+}

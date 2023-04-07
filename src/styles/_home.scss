@@ -1,0 +1,75 @@
+@import './variable.scss';
+
+
+.home {
+    grid-column: 1 / span 12;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    padding-top: $lg-padding;
+}
+
+header {
+    background-color: $primary-color;
+    grid-column: 1 / span 12;
+    padding: $lg-padding;
+
+    @media screen and (max-width: $sm-screen){
+        padding: $sm-padding;
+        padding-top: 2rem;
+    }
+
+    h1 {
+        font: $h1-display-title;
+        color: $secondary-color;
+    }
+
+    h2 {
+        font: $h2-subtitle;
+        color: $highlight-color;
+    }
+}
+
+
+figure {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    background-color: $primary-color;
+    padding: 0 $lg-padding;
+
+    @media screen and (max-width: $sm-screen){
+        grid-template-columns: repeat(8, 1fr);
+        padding: $sm-padding;
+    }
+
+    div {
+        grid-column: 1 /span 5;
+        padding-right: .5rem;
+
+        @media screen and (max-width: $sm-screen){
+            grid-column: 1 /span 5;
+        }
+    }
+
+    h4 {
+        display: block;
+        font: $h4-cta;
+        color: $highlight-color;
+        padding-bottom: 1rem;
+    }
+
+    img {
+        object-fit: cover;
+        height: 80%;
+        width: 100%;
+        grid-column: 7 / span 6;
+        border-radius: 8px;
+
+        @media screen and (max-width: $sm-screen){
+            grid-column:6 /span 3;
+            height: 100%;
+            width: 90%;
+        }
+    }
+}

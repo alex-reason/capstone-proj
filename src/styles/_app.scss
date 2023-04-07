@@ -1,3 +1,5 @@
+@import "./variable.scss";
+
 *,
 *::before,
 *::after {
@@ -7,10 +9,18 @@
     border: 0;
 }
 
+html {
+    font-size: 100%;
+
+    @media screen and (max-width: $sm-screen) {
+        font-size: 90%;
+    }
+}
+
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Markazi Text', serif;
+    font-family: "Markazi Text", serif;
 }
 
 ol,
@@ -20,4 +30,45 @@ ul {
 
 a {
     text-decoration: none;
+}
+
+.app {
+    display: grid;
+    background-color: antiquewhite;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media screen and (max-width: $sm-screen) {
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    @media screen and (max-width: $xs-screen) {
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font: $button-text;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+
+    &-primary {
+        background-color: $secondary-color;
+        color: $darkgrey-color;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $highlight-color;
+        }
+    }
+
+    &-secondary {
+        background-color: $highlight-color;
+        color: $primary-color;
+        box-shadow: 0px 2px 2px 0px #00000018;
+    }
 }
