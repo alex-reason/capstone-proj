@@ -1,6 +1,32 @@
 import { useFormik } from "formik";
+import * as yup from 'yup';
 import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
+
 const Form = ({ currForm }) => {
+    // form validations
+    // to do: finish validations; add FormControl and FormErrormessage to inputs
+    const formik = useFormik({
+        initialValues: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            numPeople: "",
+            occassion: "",
+            date: "",
+            time: ""
+        },
+        onSubmit: values => {
+            console.log(values)
+        },
+        validationSchema: yup.object().shape({
+            firstName: yup.string().required("required"),
+            lastName: yup.string().required("required"),
+            email: yup.string().email("please enter a valid email").required("required"),
+            numPeople: yup.number().required("required"),
+            occassion: yup.string().required("required"),
+            date: yup.date().required("required")
+        }),
+    });
 
     const cancelForm = (
         <form className='form'>
@@ -16,12 +42,12 @@ const Form = ({ currForm }) => {
         <form className='form'>
             <div className='form__name'>
                 <span>
-                    <label htmlFor='first-name'>First</label>
-                    <Input name='first-name' id="first-name" required />
+                    <label htmlFor='firstName'>First</label>
+                    <Input name='firstName' id="firstName" required />
                 </span>
                 <span>
-                    <label htmlFor='last-name'>Last</label>
-                    <Input name='last-name' id="last-name" />
+                    <label htmlFor='lastName'>Last</label>
+                    <Input name='lastName' id="lastName" />
                 </span>
             </div>
 
@@ -60,7 +86,15 @@ const Form = ({ currForm }) => {
                 </span>
                 <span>
                     <label htmlFor="time">Time</label>
-                    <Input type='time' name='time' id='time' min="09:00" max="19:00" required />
+                    <select name='time' id="time">
+                        <option>11:00AM</option>
+                        <option>12:00AM</option>
+                        <option>1:00PM</option>
+                        <option>5:00PM</option>
+                        <option>6:00PM</option>
+                        <option>7:00PM</option>
+                        <option>8:00PM</option>
+                    </select>
                 </span>
             </div>
 
