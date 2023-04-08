@@ -1,8 +1,12 @@
 import { useFormik } from "formik";
 import * as yup from 'yup';
 import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
+import { useContext } from 'react';
+import { AvailabilityContext } from "../context/AvailabilityContext";
 
 const Form = ({ currForm }) => {
+    const { availableTimes } = useContext(AvailabilityContext)
+
     // form validations
     // to do: finish validations; add FormControl and FormErrormessage to inputs
     const formik = useFormik({
@@ -87,13 +91,9 @@ const Form = ({ currForm }) => {
                 <span>
                     <label htmlFor="time">Time</label>
                     <select name='time' id="time">
-                        <option>11:00AM</option>
-                        <option>12:00AM</option>
-                        <option>1:00PM</option>
-                        <option>5:00PM</option>
-                        <option>6:00PM</option>
-                        <option>7:00PM</option>
-                        <option>8:00PM</option>
+                        {availableTimes.map(time =>
+                            <option>{time}</option>
+                        )}
                     </select>
                 </span>
             </div>
