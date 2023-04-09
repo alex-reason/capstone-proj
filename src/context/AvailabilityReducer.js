@@ -1,12 +1,14 @@
 export const availabilityReducer = (state, action) => {
-    let availability;
     switch (action.type) {
         // remove availability
         case 'REMOVE_AVAILABILITY':
-            availability = [...state.availableTimes].filter(time => {
-                return time !== action.payload;
-            })
-            return { ...state, availableTimes: availability}
+            return { ...state, availableTimes: action.payload }
+        case 'UPDATE_CHOSEN_TIME':
+            return { ...state, chosenTime: action.payload }
+        case 'UPDATE_CHOSEN_DATE':
+            return { ...state, chosenDate: action.payload }
+        case 'RESET':
+            return { ...state, chosenTime: null, chosenDate: null }
         default:
             return state;
     }

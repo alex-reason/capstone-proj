@@ -2,12 +2,10 @@
     grid-column: 1 / span 12;
     min-height: 100vh;
     background-color: #fff;
-    padding-top: $lg-padding;
 
     &__options {
         display: flex;
         justify-content: center;
-        padding: 0 $lg-padding;
 
         @media screen and (max-width: $sm-screen) {
             padding: 0;

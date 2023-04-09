@@ -1,7 +1,6 @@
 .form {
     margin: 1rem auto;
     padding: 1rem $lg-padding;
-    margin: 0 $lg-padding;
 
     @media screen and (max-width: $sm-screen) {
         margin: 0;
@@ -74,6 +73,15 @@
     &__confirm {
         border-top: 1px solid $highlight-color;
         padding: 1rem 0;
+
+        p {
+            color: $primary-color;
+            font: $p-text;
+
+            &:first-of-type {
+                font: $p-section-categories;
+            }
+        }
     }
 
     &__cancel {
@@ -94,25 +102,13 @@
     }
 }
 
-h3 {
+.reserve__heading {
     font: $h3-section-title;
     text-transform: uppercase;
     border-bottom: 1px solid $highlight-color;
-    margin: 0 6rem;
+    margin: 0 3rem;
 
     @media screen and (max-width: $sm-screen) {
         margin: 0 $lg-padding;
-    }
-}
-
-p {
-    color: $primary-color;
-
-    p{
-        font: $p-text;
-    }
-
-    &:first-of-type {
-        font: $p-section-categories;
     }
 }

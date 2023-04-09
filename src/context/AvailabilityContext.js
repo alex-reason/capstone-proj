@@ -1,26 +1,51 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 import { availabilityReducer } from './AvailabilityReducer';
+import { fetchAPI } from '../dateApi.js';
 
 export const AvailabilityContext = createContext();
 
 export const AvailabilityProvider = ({ children }) => {
+
     const [state, dispatch] = useReducer(
         availabilityReducer, {
-        // initial state
-        availableTimes: ['', '11:00AM', '12:00PM', '01:00PM', '02:00PM', '5:00PM', '6:00PM'],
-        availableDates: ['', '04-30-2023', '05-10-2023']
-    }
-    );
+        availableDates: ['', 'Sun Apr 30 2023', 'Wed May 10 2023'],
+        availableTimes: ['', ...fetchAPI(new Date())],
+        chosenTime: null,
+        chosenDate: null,
+    });
 
-    const removeAvailability = (time) => {
+    const updateChosenTime = (time) => {
         dispatch({
-            type: 'REMOVE_AVAILABILTIY',
+            type: 'UPDATE_CHOSEN_TIME',
             payload: time
         })
-    };
+    }
+
+    const updateChosenDate = (date) => {
+        dispatch({
+            type: 'UPDATE_CHOSEN_DATE',
+            payload: date
+        })
+    }
+
+    const resetData = () => {
+        dispatch({
+            type: 'RESET'
+        })
+    }
+
+    useEffect(() => {
+        const updatedTimes = state.availableTimes.filter(time => {
+            return time !== state.chosenTime
+        })
+        dispatch({
+            type: 'REMOVE_AVAILABILITY',
+            payload: updatedTimes
+        })
+    }, [state.chosenTime])
 
     return (
-        <AvailabilityContext.Provider value={{ ...state, removeAvailability }}>
+        <AvailabilityContext.Provider value={{ ...state, updateChosenTime, resetData, updateChosenDate }}>
             {children}
         </AvailabilityContext.Provider>
     )

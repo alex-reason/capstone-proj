@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Header from "./Header";
 import Form from "./Form";
 
 const Reserve = () => {
@@ -7,8 +6,6 @@ const Reserve = () => {
 
   return (
     <section className='reserve'>
-        <Header />
-
         <div className='reserve__options'>
           <button className={currForm === 'reserve' ? 'btn btn-secondary btn-active' : 'btn btn-secondary'} onClick={() => setCurrForm('reserve')}>
             Make a reservations

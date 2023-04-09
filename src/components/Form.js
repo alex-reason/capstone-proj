@@ -1,12 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useFormik } from "formik";
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import {FormInput, FormCancel, FormSelect} from './form-components';
 import { AvailabilityContext } from "../context/AvailabilityContext";
 
 const Form = ({ currForm }) => {
-    const { availableTimes, availableDates } = useContext(AvailabilityContext);
+    const { availableTimes, availableDates, updateChosenTime, updateChosenDate, resetData } = useContext(AvailabilityContext);
+    const navigate = useNavigate();
     const occasionsArr = ['', 'birthday', 'anniversary', 'graduation', 'others'];
+
+    useEffect(() => {
+        resetData()
+    }, [])
 
     const formik = useFormik({
         initialValues: {
@@ -21,7 +27,11 @@ const Form = ({ currForm }) => {
         onSubmit: values => {
             console.log(values);
             formik.handleReset();
+            updateChosenTime(formik.values.availTime)
+            updateChosenDate(formik.values.availDate)
+            navigate('/confirmation')
         },
+
         validationSchema: yup.object().shape({
             firstName: yup.string().required("required"),
             lastName: yup.string(),
@@ -121,6 +131,7 @@ const Form = ({ currForm }) => {
                     required
                 >
                     {availableTimes.map(availability => <option value={availability} key={availability}>{availability}</option>)}
+                
                 </FormSelect>
             </div>
 
@@ -138,7 +149,7 @@ const Form = ({ currForm }) => {
 
     return (
         <>
-            <h3>{currForm === 'reserve' ? 'Reserve a Table' : 'Cancel Reservation'}</h3>
+            <h3 className='reserve__heading'>{currForm === 'reserve' ? 'Reserve a Table' : 'Cancel Reservation'}</h3>
             {currForm === 'reserve' ? reserveForm : <FormCancel />}
         </>
     )

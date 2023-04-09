@@ -6,30 +6,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-top: $lg-padding;
 }
-
-header {
-    background-color: $primary-color;
-    grid-column: 1 / span 12;
-    padding: 1.5rem $lg-padding;
-
-    @media screen and (max-width: $sm-screen){
-        padding: $sm-padding;
-        padding-top: 2.5rem;
-    }
-
-    h1 {
-        font: $h1-display-title;
-        color: $secondary-color;
-    }
-
-    h2 {
-        font: $h2-subtitle;
-        color: $highlight-color;
-    }
-}
-
 
 figure {
     display: grid;

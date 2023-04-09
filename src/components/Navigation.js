@@ -4,7 +4,6 @@ import { MdAddShoppingCart } from "react-icons/md";
 import logo from '../assets/Logo.png'
 
 const Navigation = () => {
-
     const navContentMobile = (
         <div>
             <RxHamburgerMenu />
@@ -12,7 +11,6 @@ const Navigation = () => {
             <MdAddShoppingCart />
         </div>
     );
-
     const navContentDesktop = (
         <ul>
             <li><Link to='/'>Home</Link></li>

@@ -1,17 +1,15 @@
-import Header from "./Header";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className='home'>
-      <Header />
-
       <figure>
         <div>
           <h4>
             We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
           </h4>
           <button className='btn btn-primary'>
-            Reserve a table
+            <Link to='/reserve'>Reserve a table</Link>
           </button>
         </div>
 

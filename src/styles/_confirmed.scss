@@ -1,0 +1,14 @@
+.confirmed {
+    padding-top: $lg-padding;
+
+    p {
+        padding: 0 $lg-padding;
+        color: $primary-color;
+        font: $p-text;
+
+        &:first-of-type {
+            font: $p-section-categories;
+            padding-top: 1rem;
+        }
+    }
+}
