@@ -1,117 +1,145 @@
+import { useContext } from 'react';
 import { useFormik } from "formik";
 import * as yup from 'yup';
-import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
-import { useContext } from 'react';
+import {FormInput, FormCancel, FormSelect} from './form-components';
 import { AvailabilityContext } from "../context/AvailabilityContext";
 
 const Form = ({ currForm }) => {
-    const { availableTimes } = useContext(AvailabilityContext)
+    const { availableTimes, availableDates } = useContext(AvailabilityContext);
+    const occasionsArr = ['', 'birthday', 'anniversary', 'graduation', 'others'];
 
-    // form validations
-    // to do: finish validations; add FormControl and FormErrormessage to inputs
     const formik = useFormik({
         initialValues: {
             firstName: "",
             lastName: "",
             email: "",
             numPeople: "",
-            occassion: "",
-            date: "",
-            time: ""
+            occasion: "",
+            availDate: "",
+            availTime: ""
         },
         onSubmit: values => {
-            console.log(values)
+            console.log(values);
+            formik.handleReset();
         },
         validationSchema: yup.object().shape({
             firstName: yup.string().required("required"),
-            lastName: yup.string().required("required"),
+            lastName: yup.string(),
             email: yup.string().email("please enter a valid email").required("required"),
             numPeople: yup.number().required("required"),
-            occassion: yup.string().required("required"),
-            date: yup.date().required("required")
+            occasion: yup.string(),
+            availDate: yup.string().required('please choose a date'),
+            availTime: yup.string().required('please choose a time'),
         }),
     });
 
-    const cancelForm = (
-        <form className='form'>
-            <span className='form__cancel'>
-                <label htmlFor='cancel'>Confirmation Number</label>
-                <Input name='cancel' id='cancel' required />
-            </span>
-            <button className='btn btn-primary'>Cancel Reservation</button>
-        </form>
-    )
-
     const reserveForm = (
-        <form className='form'>
+        <form className='form' onSubmit={formik.handleSubmit}>
             <div className='form__name'>
-                <span>
-                    <label htmlFor='firstName'>First</label>
-                    <Input name='firstName' id="firstName" required />
-                </span>
-                <span>
-                    <label htmlFor='lastName'>Last</label>
-                    <Input name='lastName' id="lastName" />
-                </span>
+                <FormInput
+                    error={formik.errors.firstName}
+                    label='First'
+                    htmlFor='firstName'
+                    onChange={formik.handleChange}
+                    name='firstName'
+                    id='firstName'
+                    value={formik.values.firstName}
+                    required
+                />
+                <FormInput
+                    error={formik.errors.lastName}
+                    label='Last'
+                    htmlFor='lastName'
+                    onChange={formik.handleChange}
+                    name='lastName'
+                    id='lastName'
+                    value={formik.values.lastName}
+                />
             </div>
 
             <div className='form__details'>
-                <span>
-                    <label htmlFor='email'>Email Address</label>
-                    <Input type='email' name='email' id="email" required />
-                </span>
-                <span className='form__details-num'>
-                    <label htmlFor='numPeople'>No. of People</label>
-                    <Input type='number' name='numPeople' id="numPeople" min='1' max='15' required />
-                </span>
-                <span>
-                    <label htmlFor="occasion">Occassion</label>
-                    <select id="occasion" name="occasion">
-                        <option value="birthday">
-                            Birthday
-                        </option>
-                        <option value="anniversary">
-                            Anniversary
-                        </option>
-                        <option value="graduation">
-                            Graduation
-                        </option>
-                        <option value="other">
-                            Other
-                        </option>
-                    </select>
-                </span>
+                <FormInput
+                    error={formik.errors.email}
+                    label='Email Address'
+                    htmlFor='email'
+                    type='email'
+                    name='email'
+                    id="email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                    required
+                />
+
+                <FormInput
+                    error={formik.errors.numPeople}
+                    label='No. of People'
+                    htmlFor='numPeople'
+                    type='number'
+                    name='numPeople'
+                    id='numPeople'
+                    min='1'
+                    max='15'
+                    onChange={formik.handleChange}
+                    value={formik.values.numPeople}
+                    required
+                />
+
+                <FormSelect
+                    error={formik.errors.occasion}
+                    label='Occasion'
+                    htmlFor="occasion"
+                    id='occasion'
+                    name='occasion'
+                    {...formik.getFieldProps('occasion')}
+                >
+                    {occasionsArr.map(event => (<option value={event} key={event}>{event}</option>))}
+                </FormSelect>
             </div>
 
             <div className='form__schedule'>
-                <span>
-                    <label htmlFor="date">Date</label>
-                    <Input type='date' name='date' id='date' required />
-                </span>
-                <span>
-                    <label htmlFor="time">Time</label>
-                    <select name='time' id="time">
-                        {availableTimes.map(time =>
-                            <option>{time}</option>
-                        )}
-                    </select>
-                </span>
+                <FormSelect
+                    error={formik.errors.availDate}
+                    htmlFor="availDate"
+                    label='Date'
+                    id='availDate'
+                    name='availDate'
+                    value={formik.values.availDate}
+                    onChange={formik.handleChange}
+                    required
+                >
+                    {availableDates.map(availability => <option value={availability} key={availability}>{availability}</option>)}
+                </FormSelect>
+
+                <FormSelect
+                    error={formik.errors.availTime}
+                    htmlFor="availTime"
+                    label='Time'
+                    id='availTime'
+                    name='availTime'
+                    value={formik.values.availTime}
+                    onChange={formik.handleChange}
+                    required
+                >
+                    {availableTimes.map(availability => <option value={availability} key={availability}>{availability}</option>)}
+                </FormSelect>
             </div>
 
             <div className='form__confirm'>
                 <p>Details</p>
-                <p>put details here</p>
+                {formik.values.numPeople && <p>Table for {formik.values.numPeople}</p>}
+                {formik.values.availDate && <p>{formik.values.availDate}</p>}
+                {formik.values.availTime && <p>{formik.values.availTime}</p>}
             </div>
 
-            <button className='btn btn-primary'>Confirm Reservation</button>
+            <button className='btn btn-primary' type='submit'>Confirm Reservation</button>
 
-        </form>
+        </form >
     )
 
     return (
         <>
             <h3>{currForm === 'reserve' ? 'Reserve a Table' : 'Cancel Reservation'}</h3>
-            {currForm === 'reserve' ? reserveForm : cancelForm}
+            {currForm === 'reserve' ? reserveForm : <FormCancel />}
         </>
     )
 }

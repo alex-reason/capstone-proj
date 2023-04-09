@@ -12,7 +12,6 @@
         background-color: $highlight-color;
         border-radius: 0.5rem;
         padding: 0.5rem;
-        margin-bottom: 1.5rem;
         width: 100%;
         display: block;
     }
@@ -31,7 +30,8 @@
     &__schedule {
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
+        margin-bottom: 1rem;
 
         span {
             margin-right: 2rem;
@@ -88,6 +88,10 @@
         display: block;
         margin: auto;
     }
+
+    .error {
+        color: #cf3737;
+    }
 }
 
 h3 {
@@ -104,10 +108,11 @@ h3 {
 p {
     color: $primary-color;
 
+    p{
+        font: $p-text;
+    }
+
     &:first-of-type {
         font: $p-section-categories;
-    }
-    &:last-of-type {
-        font: $p-text;
     }
 }
