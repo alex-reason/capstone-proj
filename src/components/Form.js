@@ -1,18 +1,18 @@
-import { useContext, useEffect } from 'react';
-import { useFormik } from "formik";
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFormik } from "formik";
 import * as yup from 'yup';
-import {FormInput, FormCancel, FormSelect} from './form-components';
-import { AvailabilityContext } from "../context/AvailabilityContext";
+import { useAvailabilityContext } from "../hooks/useAvailabilityContext";
+import { FormInput, FormCancel, FormSelect } from './form-components';
 
 const Form = ({ currForm }) => {
-    const { availableTimes, availableDates, updateChosenTime, updateChosenDate, resetData } = useContext(AvailabilityContext);
     const navigate = useNavigate();
+    const { availableTimes, availableDates, updateData, resetData } = useAvailabilityContext();
     const occasionsArr = ['', 'birthday', 'anniversary', 'graduation', 'others'];
 
     useEffect(() => {
         resetData()
-    }, [])
+    }, []);
 
     const formik = useFormik({
         initialValues: {
@@ -24,11 +24,11 @@ const Form = ({ currForm }) => {
             availDate: "",
             availTime: ""
         },
+
         onSubmit: values => {
             console.log(values);
             formik.handleReset();
-            updateChosenTime(formik.values.availTime)
-            updateChosenDate(formik.values.availDate)
+            updateData({user: formik.values.firstName, chosenTime: formik.values.availTime, chosenDate: formik.values.availDate})
             navigate('/confirmation')
         },
 
@@ -131,7 +131,7 @@ const Form = ({ currForm }) => {
                     required
                 >
                     {availableTimes.map(availability => <option value={availability} key={availability}>{availability}</option>)}
-                
+
                 </FormSelect>
             </div>
 
@@ -142,8 +142,7 @@ const Form = ({ currForm }) => {
                 {formik.values.availTime && <p>{formik.values.availTime}</p>}
             </div>
 
-            <button className='btn btn-primary' type='submit'>Confirm Reservation</button>
-
+            <button className='btn btn-primary' type='submit' aria-label='confirm reservation'>Confirm Reservation</button>
         </form >
     )
 
