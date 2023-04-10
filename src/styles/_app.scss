@@ -83,7 +83,7 @@ header {
 
     @media screen and (max-width: $sm-screen) {
         padding: $sm-padding;
-        padding-top: 2.5rem;
+        padding-top: 6rem;
     }
 
     h1 {
@@ -96,9 +96,14 @@ header {
         color: $highlight-color;
     }
 }
+
 section {
     grid-column: 1 / span 12;
     min-height: 100vh;
     background-color: #fff;
     margin: 0 6rem;
+
+    @media screen and (max-width: $sm-screen){
+        margin: 0;
+    }
 }

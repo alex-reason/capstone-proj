@@ -9,32 +9,66 @@ nav {
     width: 100%;
     padding: 1rem 1rem;
 
-    div {
+    a {
+        font: $p-section-categories;
+        color: $primary-color;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .mobile {
         display: none;
 
         @media screen and (max-width: $sm-screen) {
             display: flex;
+            flex-direction: column;
             margin: auto;
+            width: 100%;
+        }
+
+        .mobile__upper {
+            display: flex;
             justify-content: space-between;
             align-items: center;
+            margin: auto;
             width: 100%;
         }
 
         svg {
             font-size: 2rem;
             color: $primary-color;
+            cursor: pointer;
+        }
+
+        &-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 30vh;
+
+            li {
+                margin: 1rem;
+            }
         }
     }
 
-    ul {
+    .hidden {
+        display: none;
+    }
+
+    .desktop {
         display: flex;
         margin: auto;
 
-        @media screen and (max-width: $sm-screen) {
-            display: none;
-        }
         li {
             margin-right: 0.5rem;
+        }
+
+        @media screen and (max-width: $sm-screen) {
+            display: none;
         }
     }
 }
