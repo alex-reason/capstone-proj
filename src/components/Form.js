@@ -8,7 +8,7 @@ import { FormInput, FormCancel, FormSelect } from './form-components';
 const Form = ({ currForm }) => {
     const navigate = useNavigate();
     const { availableTimes, availableDates, updateData, resetData } = useAvailabilityContext();
-    const occasionsArr = ['', 'birthday', 'anniversary', 'graduation', 'others'];
+    const occasionsArr = ['birthday', 'anniversary', 'graduation', 'others'];
 
     useEffect(() => {
         resetData()
@@ -28,7 +28,7 @@ const Form = ({ currForm }) => {
         onSubmit: values => {
             console.log(values);
             formik.handleReset();
-            updateData({user: formik.values.firstName, chosenTime: formik.values.availTime, chosenDate: formik.values.availDate})
+            updateData({ user: formik.values.firstName, chosenTime: formik.values.availTime, chosenDate: formik.values.availDate })
             navigate('/confirmation')
         },
 
@@ -36,7 +36,7 @@ const Form = ({ currForm }) => {
             firstName: yup.string().required("required"),
             lastName: yup.string(),
             email: yup.string().email("please enter a valid email").required("required"),
-            numPeople: yup.number().required("required"),
+            numPeople: yup.number().min(1, 'please enter a number more than 1').max(15, 'we can only seat    up to 15 people').required("required"),
             occasion: yup.string(),
             availDate: yup.string().required('please choose a date'),
             availTime: yup.string().required('please choose a time'),
@@ -54,6 +54,7 @@ const Form = ({ currForm }) => {
                     name='firstName'
                     id='firstName'
                     value={formik.values.firstName}
+                    aria-label='first name'
                     required
                 />
                 <FormInput
@@ -108,6 +109,7 @@ const Form = ({ currForm }) => {
 
             <div className='form__schedule'>
                 <FormSelect
+                    testId="date"
                     error={formik.errors.availDate}
                     htmlFor="availDate"
                     label='Date'
@@ -121,6 +123,7 @@ const Form = ({ currForm }) => {
                 </FormSelect>
 
                 <FormSelect
+                    testId="time-error-msg"
                     error={formik.errors.availTime}
                     htmlFor="availTime"
                     label='Time'

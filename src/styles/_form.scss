@@ -20,10 +20,6 @@
         margin-right: 0.5rem;
     }
 
-    select {
-        background-color: $highlight-color;
-    }
-
     &__name,
     &__details,
     &__schedule {
@@ -31,9 +27,16 @@
         justify-content: flex-start;
         align-items: flex-start;
         margin-bottom: 1rem;
-
+        @media screen and (max-width: $sm-screen) {
+            margin-bottom: 0
+        }
         span {
             margin-right: 2rem;
+
+            @media screen and (max-width: $sm-screen) {
+                margin-bottom: 1rem;
+                margin-right: 0;
+            }
 
             &:last-of-type {
                 margin-right: 0;
@@ -53,19 +56,32 @@
         }
     }
 
-    &__details span:nth-of-type(2) {
-        width: 60%;
+    &__details {
+        span:nth-of-type(2) {
+            width: 60%;
 
-        @media screen and (max-width: $sm-screen) {
-            width: 100%;
+            @media screen and (max-width: $sm-screen) {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+        }
+        select {
+            @media screen and (max-width: $sm-screen) {
+                margin-bottom: .5rem;
+            }
         }
     }
 
     &__schedule {
         span {
-            width: 30%;
+            width: 36%;
+
             @media screen and (max-width: $sm-screen) {
                 width: 50%;
+
+                &:first-of-type {
+                    margin-right: 1rem;
+                }
             }
         }
     }
@@ -110,5 +126,20 @@
 
     @media screen and (max-width: $sm-screen) {
         margin: 0 $lg-padding;
+    }
+}
+
+.select {
+    position: relative;
+
+    select {
+        background-color: $highlight-color;
+        font: 800 0.8rem "Karla", sans-serif;
+        color: #585858;
+    }
+    option {
+        padding: 1rem;
+        font: 800 0.8rem "Karla", sans-serif;
+        color: $primary-color;
     }
 }

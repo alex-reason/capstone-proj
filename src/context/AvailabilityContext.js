@@ -8,8 +8,8 @@ export const AvailabilityProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(
         availabilityReducer, {
-        availableDates: ['', 'Sun Apr 30 2023', 'Wed May 10 2023'],
-        availableTimes: ['', ...fetchAPI(new Date())],
+        availableDates: ['Sun Apr 30 2023', 'Wed May 10 2023'],
+        availableTimes: [...fetchAPI(new Date())],
         chosenTime: null,
         chosenDate: null,
         user: null,
