@@ -3,7 +3,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdAddShoppingCart } from "react-icons/md";
 import logo from '../assets/Logo.png'
 import { useState } from "react";
-import { click } from "@testing-library/user-event/dist/click";
 
 const Navigation = () => {
     const [clicked, setClicked] = useState(false);

@@ -19,7 +19,7 @@ const FormCancel = () => {
             setError("please enter a valid 5-digit code")
         } else {
             setError(null);
-            navigate('/cancelled')
+            navigate('/capstone/cancelled')
         }
     };
 

@@ -12,7 +12,7 @@ const Form = ({ currForm }) => {
 
     useEffect(() => {
         resetData()
-    }, []);
+    }, []) //now shut up eslint
 
     const formik = useFormik({
         initialValues: {

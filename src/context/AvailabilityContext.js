@@ -47,7 +47,7 @@ export const AvailabilityProvider = ({ children }) => {
     }, [state.chosenTime])
 
     return (
-        <AvailabilityContext.Provider value={{ ...state,  resetData, updateData, updateCancelCode }}>
+        <AvailabilityContext.Provider value={{ ...state,  resetData, updateData, updateCancelCode, dispatch}}>
             {children}
         </AvailabilityContext.Provider>
     )
