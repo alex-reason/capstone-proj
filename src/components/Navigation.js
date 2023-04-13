@@ -9,8 +9,8 @@ const Navigation = () => {
     const [clicked, setClicked] = useState(false);
     const navContentDesktop = (
         <ul className='desktop'>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/reserve'>Reservations</Link></li>
+            <li><Link to='/capstone-proj'>Home</Link></li>
+            <li><Link to='/capstone-proj/reserve'>Reservations</Link></li>
         </ul>
     );
 

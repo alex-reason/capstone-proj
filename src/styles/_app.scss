@@ -106,3 +106,12 @@ section {
         box-shadow: 0px 4px 4px 0px #00000040;
     }
 }
+
+footer {
+    grid-column: 1 / span 12;
+    background-color: $highlight-color;
+    color: $primary-color;
+    font: $p-text;
+    padding: 1rem;
+    text-align: center;
+}

@@ -6,7 +6,7 @@ const CancelledPage = () => {
   const navigate = useNavigate();
 
   if (!cancelCode){
-    navigate('/reserve')
+    navigate('/capstone-proj/reserve')
   }
 
   return (

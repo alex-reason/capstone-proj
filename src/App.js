@@ -8,11 +8,11 @@ const App = () => {
         <Navigation />
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/reserve' element={<Reserve />} />
-          <Route path='/confirmation' element={<ConfirmationPage />} />
+          <Route path='/capstone-proj' element={<Home />} />
+          <Route path='/capstone-proj/reserve' element={<Reserve />} />
+          <Route path='/capstone-proj/confirmation' element={<ConfirmationPage />} />
           <Route
-            path='/cancelled'
+            path='/capstone-proj/cancelled'
             element={<CancelledPage />} />
         </Routes>
       </BrowserRouter>

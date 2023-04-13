@@ -9,7 +9,7 @@ const ConfirmationPage = () => {
   if (user && chosenDate && chosenTime) {
     confirmationData = true;
   } else {
-    navigate('/reserve')
+    navigate('/capstone-proj/reserve')
   }
 
   return (

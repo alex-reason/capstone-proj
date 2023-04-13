@@ -29,7 +29,7 @@ const Form = ({ currForm }) => {
             console.log(values);
             formik.handleReset();
             updateData({ user: formik.values.firstName, chosenTime: formik.values.availTime, chosenDate: formik.values.availDate })
-            navigate('/confirmation')
+            navigate('/capstone-prof/confirmation')
         },
 
         validationSchema: yup.object().shape({

@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer>
-        Footer
+        2023 Alexandra All Rights Reserved
     </footer>
   )
 }
