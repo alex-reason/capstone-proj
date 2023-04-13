@@ -15,8 +15,8 @@ const Navigation = () => {
 
     const openedMenu = (
         <ul className={clicked ? 'mobile-nav' : 'hidden'}>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/reserve'>Reservations</Link></li>
+            <li><Link to='/capstone-proj/'>Home</Link></li>
+            <li><Link to='/capstone-proj/reserve'>Reservations</Link></li>
         </ul>
     )
 
@@ -28,7 +28,7 @@ const Navigation = () => {
         <div className='mobile'>
             <div className='mobile__upper'>
                 <RxHamburgerMenu onClick={clickHandler} />
-                <img src={logo} alt='little lemon logo' />
+                <Link to='/capstone-proj/'><img src={logo} alt='little lemon logo' /></Link>
                 <MdAddShoppingCart />
             </div>
             {openedMenu}

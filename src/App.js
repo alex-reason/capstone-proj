@@ -11,12 +11,9 @@ const App = () => {
           <Route path='/capstone-proj' element={<Home />} />
           <Route path='/capstone-proj/reserve' element={<Reserve />} />
           <Route path='/capstone-proj/confirmation' element={<ConfirmationPage />} />
-          <Route
-            path='/capstone-proj/cancelled'
-            element={<CancelledPage />} />
+          <Route path='/capstone-proj/cancelled' element={<CancelledPage />} />
         </Routes>
       </BrowserRouter>
-
       <Footer />
     </div>
   )
