@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useAvailabilityContext } from "../hooks/useAvailabilityContext";
 import { FormInput, FormCancel, FormSelect } from './form-components';
 
-const Form = ({ currForm }) => {
+const BookingForm = ({ currForm }) => {
     const navigate = useNavigate();
     const { availableTimes, availableDates, updateData, resetData } = useAvailabilityContext();
     const occasionsArr = ['birthday', 'anniversary', 'graduation', 'others'];
@@ -157,4 +157,4 @@ const Form = ({ currForm }) => {
     )
 }
 
-export default Form
+export default BookingForm

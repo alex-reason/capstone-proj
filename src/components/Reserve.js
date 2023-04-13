@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Form from "./Form";
+import BookingForm from "./BookingForm";
 
 const Reserve = () => {
   const [currForm, setCurrForm] = useState('reserve');
@@ -15,7 +15,7 @@ const Reserve = () => {
           </button>
         </div>
         
-        <Form currForm={currForm}/>
+        <BookingForm currForm={currForm}/>
     </section>
   )
 }
